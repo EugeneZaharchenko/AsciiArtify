@@ -1,0 +1,29 @@
+apiVersion: krew.sigs.k8s.io/v1alpha3
+kind: Plugin
+metadata:
+  name: myscript
+  shortDescription: "My custom k8s script"
+spec:
+  version: "v1.0.0"
+  platforms:
+    - selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+    - selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+    - selector:
+        matchLabels:
+          os: windows
+          arch: amd64
+  homepage: "https://github.com/EugeneZaharchenko/AsciiArtify"
+  description: |
+    Output the statistics to the console.
+  maintainers:
+    - name: EugeneZaharchenko
+      email: eugenezaharchenko@gmail.com
+  directory: "./scripts"
+  install:
+    - "kubectl-kubeplugin.sh": "chmod +x {{ .InstallDir }}/kubectl-kubeplugin.sh"
